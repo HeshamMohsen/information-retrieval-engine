@@ -1,0 +1,160 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+  background-color: #F3FAF7;
+}
+
+h1, p {
+  margin: 0;
+}
+
+/* index file */
+.container {
+  width: 70%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  box-shadow: 0.9px 5px 8px 0 rgba(0, 0, 0, 0.19);
+  padding: 30px;
+}
+
+.container .header-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.container .header-title h1 {
+  font-size: 45px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.container .forms {
+  display: flex;
+  justify-content: center;
+}
+
+.container .forms input[type="text"] {
+  padding: 15px 32px;
+  border: 1px solid #ccc;
+  /* margin-top: 8px; */
+  /* margin-right: 16px; */
+  font-size: 17px;
+}
+
+.button {
+  background-color: #209E6D; 
+  border: 1px solid #209E6D;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #4bb68d;
+}
+
+.button--white {
+  background: #fff;
+  border: 1px solid #209E6D;
+  color: #209E6D;  
+}
+
+.button--white:hover {
+  background-color: #209E6D;
+  color: #fff;
+}
+
+/* generate file */
+.handler--white {
+  width: 70%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  box-shadow: 0.9px 5px 8px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+}
+
+.header-text, .image {
+  width: 50%;
+}
+
+.header-text .header-square {
+  margin: 100px auto;
+  color: #fff;
+  padding: 30px;
+  text-align: left;
+}
+
+.header-text .header-square h1 {
+  font-size: 45px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.header-text .header-square p {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 900;
+}
+
+.header-text .header-square a,
+.header-text .header-square-top a.back {
+  border: 1px solid #A1D5C1;
+  color: #209E6D;
+  padding: 6px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+.header-text .header-square a:hover,
+.header-text .header-square-top a.back:hover {
+  color: #fff;
+  background-color: #209E6D;
+  border: 1px solid #209E6D;
+}
+
+.image .image--square {
+  margin: 15px auto;
+  height: 350px;
+}
+
+.image .image--square img {
+  width: 100%;
+  height: 100%;
+}
+
+/* rank file */
+
+.header-text .header-square-top {
+  margin: 50px auto 0 auto;
+  color: #fff;
+  padding: 30px;
+  text-align: left;
+}
+
+.header-text .header-square-top h1 {
+  font-size: 45px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.list {
+  padding: 20px 0;
+  color: #333;
+}
+
+.list p {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
