@@ -1,7 +1,7 @@
 <?php
-
+//  'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 // characters array from [A-E]
-$charSet = ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+$charSet = ['A','B','C','D','E'];
 // get random file length of characters 
 $fileLength = rand(10, 20);
 
