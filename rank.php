@@ -88,8 +88,8 @@ if ($queryUpper == "") {
   $fileContent1 = file_get_contents("file1.txt");
   $fileContent2 = file_get_contents("file2.txt");
   $fileContent3 = file_get_contents("file3.txt");
-  // $fileContent4 = file_get_contents("file4.txt");
-  // $fileContent5 = file_get_contents("file5.txt");
+  $fileContent4 = file_get_contents("file4.txt");
+  $fileContent5 = file_get_contents("file5.txt");
 
   // get files score
   $fileScore_1 = getFileScore($fileContent1, $queryUpper, $set);
