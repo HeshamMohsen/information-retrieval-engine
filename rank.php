@@ -18,33 +18,58 @@ if ($queryUpper == "") {
 
   // function score to calculate the score of the 3 files
   function score($As,$Bs,$Cs,$Ds,$Es,$queryUpper,$len) {
-    $Aratio=1;
-    $Bratio=1;
-    $Cratio=1;
-    $Dratio=1;
-    $Eratio=1;
+    $Aratio=0;
+    $Bratio=0;
+    $Cratio=0;
+    $Dratio=0;
+    $Eratio=0;
 
-    if(strpos($queryUpper, "A:")){
-      $start=strpos($queryUpper, "A:")+2;
-      $Aratio=substr($queryUpper,$start,3);
+    if(strpos($queryUpper, "A")){
+      $start=strpos($queryUpper, "A");
+      if($queryUpper[$start + 1] == ';') {
+        $Aratio = 1;
+      } else {
+        $start=strpos($queryUpper, "A")+2;
+        $Aratio=substr($queryUpper,$start,3);
+      }
     }
-    if(strpos($queryUpper, "B:")){
-      $start=strpos($queryUpper, "B:")+2;
-      $Bratio=substr($queryUpper,$start,3);
+    if(strpos($queryUpper, "B")){
+      $start=strpos($queryUpper, "B");
+      if($queryUpper[$start + 1] == ';') {
+        $Bratio = 1;
+      } else {
+        $start=strpos($queryUpper, "B")+2;
+        $Bratio=substr($queryUpper,$start,3);
+      }
     }
-    if(strpos($queryUpper, "C:")){
-      $start=strpos($queryUpper, "C:")+2;
-      $Cratio=substr($queryUpper,$start,3);
+    if(strpos($queryUpper, "C")){
+      $start=strpos($queryUpper, "C");
+      if($queryUpper[$start + 1] == ';') {
+        $Cratio = 1;
+      } else {
+        $start=strpos($queryUpper, "C")+2;
+        $Cratio=substr($queryUpper,$start,3);
+      }
     }
-    if(strpos($queryUpper, "D:")){
-      $start=strpos($queryUpper, "D:")+2;
-      $Dratio=substr($queryUpper,$start,3);
+    if(strpos($queryUpper, "D")){
+      $start=strpos($queryUpper, "D");
+      if($queryUpper[$start + 1] == ';') {
+        $Dratio = 1;
+      } else {
+        $start=strpos($queryUpper, "D")+2;
+        $Dratio=substr($queryUpper,$start,3);
+      }
     }
-    if(strpos($queryUpper, "E:")){
-      $start=strpos($queryUpper, "E:")+2;
-      $Eratio=substr($queryUpper,$start,3);
+    if(strpos($queryUpper, "E")){
+      $start=strpos($queryUpper, "E");
+      if($queryUpper[$start + 1] == ';') {
+        $Eratio = 1;
+      } else {
+        $start=strpos($queryUpper, "E")+2;
+        $Eratio=substr($queryUpper,$start,3);
+      }
     }
-    return $score =($As/$len*$Aratio)+($Bs/$len*$Bratio)+($Cs/$len*$Cratio)+($Es/$len*$Eratio)+($Ds/$len*$Dratio);
+    return $score =(($As/$len)*$Aratio)+(($Bs/$len)*$Bratio)+(($Cs/$len)*$Cratio)+(($Es/$len)*$Eratio)+(($Ds/$len)*$Dratio);
   }
 
   // getFileScore gets the score for each file after count all characters numbers
