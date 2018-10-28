@@ -1,5 +1,34 @@
 <?php
 
+// set hash-map 
+$set = array(
+  'A' => array('occur' => 0, 'ratio' => 1),
+  'B' => array('occur' => 0, 'ratio' => 1),
+  'C' => array('occur' => 0, 'ratio' => 1),
+  'D' => array('occur' => 0, 'ratio' => 1),
+  'E' => array('occur' => 0, 'ratio' => 1),
+  'F' => array('occur' => 0, 'ratio' => 1),
+  'G' => array('occur' => 0, 'ratio' => 1),
+  'H' => array('occur' => 0, 'ratio' => 1),
+  'I' => array('occur' => 0, 'ratio' => 1),
+  'J' => array('occur' => 0, 'ratio' => 1),
+  'K' => array('occur' => 0, 'ratio' => 1),
+  'L' => array('occur' => 0, 'ratio' => 1),
+  'M' => array('occur' => 0, 'ratio' => 1),
+  'N' => array('occur' => 0, 'ratio' => 1),
+  'O' => array('occur' => 0, 'ratio' => 1),
+  'P' => array('occur' => 0, 'ratio' => 1),
+  'Q' => array('occur' => 0, 'ratio' => 1),
+  'R' => array('occur' => 0, 'ratio' => 1),
+  'S' => array('occur' => 0, 'ratio' => 1),
+  'T' => array('occur' => 0, 'ratio' => 1),
+  'U' => array('occur' => 0, 'ratio' => 1),
+  'V' => array('occur' => 0, 'ratio' => 1),
+  'W' => array('occur' => 0, 'ratio' => 1),
+  'X' => array('occur' => 0, 'ratio' => 1),
+  'Y' => array('occur' => 0, 'ratio' => 1),
+  'Z' => array('occur' => 0, 'ratio' => 1)
+);
 // get query from input
 $queryLower = $_POST["querystring"];
 // convert the query to uppercase
@@ -10,76 +39,43 @@ if ($queryUpper == "") {
   $title = "Whoops...";
   $message = "We're unable to find data you're looking for";
   $btnText = "Find Again";
-} else if (!preg_match('/^<([A-E]([:][0][.][1-9])?[;])+>$/', $queryUpper)){
+} else if (!preg_match('/^<([A-Z]([:][0][.][1-9])?[;])+>$/', $queryUpper)){
     $title = "Whoops...";
     $message = "We're unable to find data you're looking for";
     $btnText = "Find Again";
 } else { 
 
   // function score to calculate the score of the 3 files
-  function score($As,$Bs,$Cs,$Ds,$Es,$queryUpper,$len) {
-    $Aratio=1;
-    $Bratio=1;
-    $Cratio=1;
-    $Dratio=1;
-    $Eratio=1;
-
-    if(strpos($queryUpper, "A:")){
-      $start=strpos($queryUpper, "A:")+2;
-      $Aratio=substr($queryUpper,$start,3);
+  function score($set, $queryUpper, $len) {
+    // init score var with 0 
+    $score = 0;
+    // loop through $set characters to fetch each char
+    foreach($set as $key => $val) {
+      // check if character exist in query
+      if(strpos($queryUpper, $key)){
+        // get the start position of ratio
+        $start  = strpos($queryUpper, $key) + 2;
+        // assign the value of ration in char ratio index
+        $set[$key]['ratio'] = substr($queryUpper, $start, 3);
+      }
+      // add score 
+      $score += ($set[$key]['occur']/$len*$set[$key]['ratio']);
     }
-    if(strpos($queryUpper, "B:")){
-      $start=strpos($queryUpper, "B:")+2;
-      $Bratio=substr($queryUpper,$start,3);
-    }
-    if(strpos($queryUpper, "C:")){
-      $start=strpos($queryUpper, "C:")+2;
-      $Cratio=substr($queryUpper,$start,3);
-    }
-    if(strpos($queryUpper, "D:")){
-      $start=strpos($queryUpper, "D:")+2;
-      $Dratio=substr($queryUpper,$start,3);
-    }
-    if(strpos($queryUpper, "E:")){
-      $start=strpos($queryUpper, "E:")+2;
-      $Eratio=substr($queryUpper,$start,3);
-    }
-    return $score =($As/$len*$Aratio)+($Bs/$len*$Bratio)+($Cs/$len*$Cratio)+($Es/$len*$Eratio)+($Ds/$len*$Dratio);
+    // return score
+    return $score;
   }
 
   // getFileScore gets the score for each file after count all characters numbers
   // then send to score calculations function to return each file score
-  function getFileScore($fileContent, $query) {
-    $result = 0;
+  function getFileScore($fileContent, $query, $set) {
+    // get file length
     $fileLength = strlen($fileContent);
-
-    $As=0;
-    $Bs=0;
-    $Cs=0;
-    $Ds=0;
-    $Es=0;
-
+    // each loop add character occur in set
     for($i = 0; $i < $fileLength; $i++){
-      switch ($fileContent[$i]) {
-        case 'A':
-          $As++;
-          break;
-        case 'B':
-          $Bs++;
-          break;
-        case 'C':
-          $Cs++;
-          break;
-        case 'D':
-          $Ds++;
-          break;
-        case 'E':
-          $Es++;
-          break;
-      }
+      $set[$fileContent[$i]]['occur'] += 1;
     }
-
-    $result = score($As,$Bs,$Cs,$Ds,$Es,$query,$fileLength);
+    // call score()  
+    $result = score($set,$query,$fileLength);
     return $result;
   }
 
@@ -91,14 +87,14 @@ if ($queryUpper == "") {
   $fileContent5 = file_get_contents("file5.txt");
 
   // get files score
-  $fileScore_1 = getFileScore($fileContent1, $queryUpper);
-  $fileScore_2 = getFileScore($fileContent2, $queryUpper);
-  $fileScore_3 = getFileScore($fileContent3, $queryUpper);
-  $fileScore_4 = getFileScore($fileContent4, $queryUpper);
-  $fileScore_5 = getFileScore($fileContent5, $queryUpper);
+  $fileScore_1 = getFileScore($fileContent1, $queryUpper, $set);
+  $fileScore_2 = getFileScore($fileContent2, $queryUpper, $set);
+  $fileScore_3 = getFileScore($fileContent3, $queryUpper, $set);
+  $fileScore_4 = getFileScore($fileContent4, $queryUpper, $set);
+  $fileScore_5 = getFileScore($fileContent5, $queryUpper, $set);
 
 
-    // files
+  // files
   $files = [
       "<a href='http://localhost/IR-engine/file1.txt' target='_blank'>file1</a>" => $fileScore_1,
       "<a href='http://localhost/IR-engine/file2.txt' target='_blank'>file2</a>" => $fileScore_2,
