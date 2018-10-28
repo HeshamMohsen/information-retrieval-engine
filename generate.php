@@ -1,8 +1,6 @@
 <?php
 // characters array from [A-E]
 $charSet = ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-// get random file length of characters 
-$fileLength = rand(10, 20);
 
 // open  5-files and add flag 'w' => 'write'
 $fileOne    = fopen("file1.txt", "w") or die("Unable to open file!");
@@ -14,7 +12,9 @@ $fileFive   = fopen("file5.txt", "w") or die("Unable to open file!");
 // generate function takes file, lengthOfFile, charsArray 
 // and generate string from charSet array randomly 
 // then write it in each files 
-function generate ($file, $fileLength, $chars) {
+function generate ($file, $chars) {
+  // get random file length of characters 
+  $fileLength = rand(10, 20);
   // define empty string to add the generated characters
   $str = '';
   // generate random number from 0 - 4 length of characters array
@@ -30,11 +30,11 @@ function generate ($file, $fileLength, $chars) {
 }
 
 // generate function call 5 times of 5 files
-generate($fileOne, $fileLength, $charSet);
-generate($fileTwo, $fileLength, $charSet);
-generate($fileThree, $fileLength, $charSet);
-generate($fileFour, $fileLength, $charSet);
-generate($fileFive, $fileLength, $charSet);
+generate($fileOne, $charSet);
+generate($fileTwo, $charSet);
+generate($fileThree, $charSet);
+generate($fileFour, $charSet);
+generate($fileFive, $charSet);
 
 // get files content
 $fileContent1 = file_get_contents("file1.txt");
