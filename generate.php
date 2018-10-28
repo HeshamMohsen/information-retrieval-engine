@@ -1,6 +1,6 @@
 <?php
 // characters array from [A-E]
-$charSet = ['A','B','C','D','E'];
+$charSet = ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 // get random file length of characters 
 $fileLength = rand(10, 20);
 
@@ -20,7 +20,7 @@ function generate ($file, $fileLength, $chars) {
   // generate random number from 0 - 4 length of characters array
   // and then add to str string 
   for($i = 0; $i < $fileLength; $i++){
-    $index = rand(0, 4);
+    $index = rand(0, 25);
     $str.= $chars[$index];
   }
   // write str in the opened file
