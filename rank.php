@@ -2,32 +2,32 @@
 
 // set hash-map 
 $set = array(
-  'A' => array('occur' => 0, 'ratio' => 1),
-  'B' => array('occur' => 0, 'ratio' => 1),
-  'C' => array('occur' => 0, 'ratio' => 1),
-  'D' => array('occur' => 0, 'ratio' => 1),
-  'E' => array('occur' => 0, 'ratio' => 1),
-  'F' => array('occur' => 0, 'ratio' => 1),
-  'G' => array('occur' => 0, 'ratio' => 1),
-  'H' => array('occur' => 0, 'ratio' => 1),
-  'I' => array('occur' => 0, 'ratio' => 1),
-  'J' => array('occur' => 0, 'ratio' => 1),
-  'K' => array('occur' => 0, 'ratio' => 1),
-  'L' => array('occur' => 0, 'ratio' => 1),
-  'M' => array('occur' => 0, 'ratio' => 1),
-  'N' => array('occur' => 0, 'ratio' => 1),
-  'O' => array('occur' => 0, 'ratio' => 1),
-  'P' => array('occur' => 0, 'ratio' => 1),
-  'Q' => array('occur' => 0, 'ratio' => 1),
-  'R' => array('occur' => 0, 'ratio' => 1),
-  'S' => array('occur' => 0, 'ratio' => 1),
-  'T' => array('occur' => 0, 'ratio' => 1),
-  'U' => array('occur' => 0, 'ratio' => 1),
-  'V' => array('occur' => 0, 'ratio' => 1),
-  'W' => array('occur' => 0, 'ratio' => 1),
-  'X' => array('occur' => 0, 'ratio' => 1),
-  'Y' => array('occur' => 0, 'ratio' => 1),
-  'Z' => array('occur' => 0, 'ratio' => 1)
+  'A' => array('occur' => 0, 'ratio' => 0),
+  'B' => array('occur' => 0, 'ratio' => 0),
+  'C' => array('occur' => 0, 'ratio' => 0),
+  'D' => array('occur' => 0, 'ratio' => 0),
+  'E' => array('occur' => 0, 'ratio' => 0),
+  'F' => array('occur' => 0, 'ratio' => 0),
+  'G' => array('occur' => 0, 'ratio' => 0),
+  'H' => array('occur' => 0, 'ratio' => 0),
+  'I' => array('occur' => 0, 'ratio' => 0),
+  'J' => array('occur' => 0, 'ratio' => 0),
+  'K' => array('occur' => 0, 'ratio' => 0),
+  'L' => array('occur' => 0, 'ratio' => 0),
+  'M' => array('occur' => 0, 'ratio' => 0),
+  'N' => array('occur' => 0, 'ratio' => 0),
+  'O' => array('occur' => 0, 'ratio' => 0),
+  'P' => array('occur' => 0, 'ratio' => 0),
+  'Q' => array('occur' => 0, 'ratio' => 0),
+  'R' => array('occur' => 0, 'ratio' => 0),
+  'S' => array('occur' => 0, 'ratio' => 0),
+  'T' => array('occur' => 0, 'ratio' => 0),
+  'U' => array('occur' => 0, 'ratio' => 0),
+  'V' => array('occur' => 0, 'ratio' => 0),
+  'W' => array('occur' => 0, 'ratio' => 0),
+  'X' => array('occur' => 0, 'ratio' => 0),
+  'Y' => array('occur' => 0, 'ratio' => 0),
+  'Z' => array('occur' => 0, 'ratio' => 0)
 );
 // get query from input
 $queryLower = $_POST["querystring"];
@@ -54,12 +54,17 @@ if ($queryUpper == "") {
       // check if character exist in query
       if(strpos($queryUpper, $key)){
         // get the start position of ratio
-        $start  = strpos($queryUpper, $key) + 2;
-        // assign the value of ration in char ratio index
-        $set[$key]['ratio'] = substr($queryUpper, $start, 3);
+        $start = strpos($queryUpper, $key);
+        if($queryUpper[$start + 1] == ';') {
+          $set[$key]['ratio'] = 1;
+        } else {
+          $start = strpos($queryUpper, $key) + 2;
+          // assign the value of ration in char ratio index
+          $set[$key]['ratio'] = substr($queryUpper, $start, 3);
+        }
       }
       // add score 
-      $score += ($set[$key]['occur']/$len*$set[$key]['ratio']);
+      $score += (($set[$key]['occur']/$len)*$set[$key]['ratio']);
     }
     // return score
     return $score;
@@ -83,8 +88,8 @@ if ($queryUpper == "") {
   $fileContent1 = file_get_contents("file1.txt");
   $fileContent2 = file_get_contents("file2.txt");
   $fileContent3 = file_get_contents("file3.txt");
-  $fileContent4 = file_get_contents("file4.txt");
-  $fileContent5 = file_get_contents("file5.txt");
+  // $fileContent4 = file_get_contents("file4.txt");
+  // $fileContent5 = file_get_contents("file5.txt");
 
   // get files score
   $fileScore_1 = getFileScore($fileContent1, $queryUpper, $set);
