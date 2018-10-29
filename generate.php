@@ -1,4 +1,32 @@
 <?php
+// $charSet = [
+//   'food',
+//   'love',
+//   'play',
+//   'write',
+//   'run',
+//   'gym',
+//   'sex',
+//   'python',
+//   'programming',
+//   'pasta',
+//   'chicken',
+//   'yellow',
+//   'red',
+//   'color',
+//   'I',
+//   'am',
+//   'scripting',
+//   'friends',
+//   'auto',
+//   'plan',
+//   'car',
+//   'building',
+//   'logo',
+//   'code',
+//   'php',
+//   'javascript'
+// ];
 // characters array from [A-E]
 $charSet = ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
