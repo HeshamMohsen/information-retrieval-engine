@@ -1,34 +1,64 @@
 <?php
 
 // set hash-map 
+// $set = array(
+//   'food' => array('occur' => 0, 'ratio' => 0),
+//   'love' => array('occur' => 0, 'ratio' => 0),
+//   'play' => array('occur' => 0, 'ratio' => 0),
+//   'write' => array('occur' => 0, 'ratio' => 0),
+//   'run' => array('occur' => 0, 'ratio' => 0),
+//   'gym' => array('occur' => 0, 'ratio' => 0),
+//   'sex' => array('occur' => 0, 'ratio' => 0),
+//   'python' => array('occur' => 0, 'ratio' => 0),
+//   'programming' => array('occur' => 0, 'ratio' => 0),
+//   'pasta' => array('occur' => 0, 'ratio' => 0),
+//   'chicken' => array('occur' => 0, 'ratio' => 0),
+//   'yellow' => array('occur' => 0, 'ratio' => 0),
+//   'red' => array('occur' => 0, 'ratio' => 0),
+//   'color' => array('occur' => 0, 'ratio' => 0),
+//   'I' => array('occur' => 0, 'ratio' => 0),
+//   'am' => array('occur' => 0, 'ratio' => 0),
+//   'scripting' => array('occur' => 0, 'ratio' => 0),
+//   'friends' => array('occur' => 0, 'ratio' => 0),
+//   'auto' => array('occur' => 0, 'ratio' => 0),
+//   'plan' => array('occur' => 0, 'ratio' => 0),
+//   'car' => array('occur' => 0, 'ratio' => 0),
+//   'building' => array('occur' => 0, 'ratio' => 0),
+//   'logo' => array('occur' => 0, 'ratio' => 0),
+//   'code' => array('occur' => 0, 'ratio' => 0),
+//   'php' => array('occur' => 0, 'ratio' => 0),
+//   'javascript' => array('occur' => 0, 'ratio' => 0)
+// );
+
 $set = array(
-  'A' => array('occur' => 0, 'ratio' => 0),
-  'B' => array('occur' => 0, 'ratio' => 0),
-  'C' => array('occur' => 0, 'ratio' => 0),
-  'D' => array('occur' => 0, 'ratio' => 0),
-  'E' => array('occur' => 0, 'ratio' => 0),
-  'F' => array('occur' => 0, 'ratio' => 0),
-  'G' => array('occur' => 0, 'ratio' => 0),
-  'H' => array('occur' => 0, 'ratio' => 0),
-  'I' => array('occur' => 0, 'ratio' => 0),
-  'J' => array('occur' => 0, 'ratio' => 0),
-  'K' => array('occur' => 0, 'ratio' => 0),
-  'L' => array('occur' => 0, 'ratio' => 0),
-  'M' => array('occur' => 0, 'ratio' => 0),
-  'N' => array('occur' => 0, 'ratio' => 0),
-  'O' => array('occur' => 0, 'ratio' => 0),
-  'P' => array('occur' => 0, 'ratio' => 0),
-  'Q' => array('occur' => 0, 'ratio' => 0),
-  'R' => array('occur' => 0, 'ratio' => 0),
-  'S' => array('occur' => 0, 'ratio' => 0),
-  'T' => array('occur' => 0, 'ratio' => 0),
-  'U' => array('occur' => 0, 'ratio' => 0),
-  'V' => array('occur' => 0, 'ratio' => 0),
-  'W' => array('occur' => 0, 'ratio' => 0),
-  'X' => array('occur' => 0, 'ratio' => 0),
-  'Y' => array('occur' => 0, 'ratio' => 0),
-  'Z' => array('occur' => 0, 'ratio' => 0)
+  'A' => array('occur' => 0, 'ratio' => 1),
+  'B' => array('occur' => 0, 'ratio' => 1),
+  'C' => array('occur' => 0, 'ratio' => 1),
+  'D' => array('occur' => 0, 'ratio' => 1),
+  'E' => array('occur' => 0, 'ratio' => 1),
+  'F' => array('occur' => 0, 'ratio' => 1),
+  'G' => array('occur' => 0, 'ratio' => 1),
+  'H' => array('occur' => 0, 'ratio' => 1),
+  'I' => array('occur' => 0, 'ratio' => 1),
+  'J' => array('occur' => 0, 'ratio' => 1),
+  'K' => array('occur' => 0, 'ratio' => 1),
+  'L' => array('occur' => 0, 'ratio' => 1),
+  'M' => array('occur' => 0, 'ratio' => 1),
+  'N' => array('occur' => 0, 'ratio' => 1),
+  'O' => array('occur' => 0, 'ratio' => 1),
+  'P' => array('occur' => 0, 'ratio' => 1),
+  'Q' => array('occur' => 0, 'ratio' => 1),
+  'R' => array('occur' => 0, 'ratio' => 1),
+  'S' => array('occur' => 0, 'ratio' => 1),
+  'T' => array('occur' => 0, 'ratio' => 1),
+  'U' => array('occur' => 0, 'ratio' => 1),
+  'V' => array('occur' => 0, 'ratio' => 1),
+  'W' => array('occur' => 0, 'ratio' => 1),
+  'X' => array('occur' => 0, 'ratio' => 1),
+  'Y' => array('occur' => 0, 'ratio' => 1),
+  'Z' => array('occur' => 0, 'ratio' => 1)
 );
+
 // get query from input
 $queryLower = $_POST["querystring"];
 // convert the query to uppercase
@@ -39,26 +69,30 @@ if ($queryUpper == "") {
   $title = "Whoops...";
   $message = "We're unable to find data you're looking for";
   $btnText = "Find Again";
-} else if (!preg_match('/^<([A-Z]([:][0][.][1-9])?[;])+>$/', $queryUpper)){
+} else if (!preg_match('/^<([A-Za-z]+([:][0][.][1-9])?[;])+>$/', $queryUpper)){
     $title = "Whoops...";
     $message = "We're unable to find data you're looking for";
     $btnText = "Find Again";
 } else { 
 
   // function score to calculate the score of the 3 files
-  function score($set, $queryUpper, $len) {
+  function score($set, $queryUpper, $fileContent, $len) {
     // init score var with 0 
     $score = 0;
     // loop through $set characters to fetch each char
     foreach($set as $key => $val) {
       // check if character exist in query
       if(strpos($queryUpper, $key)){
+        // count occur for every $key
+        $numberOfKey = count_occur($fileContent, $key);
+        // add how many key exist in file to 'occur counter'
+        $set[$key]['occur'] += $numberOfKey;
         // get the start position of ratio
         $start = strpos($queryUpper, $key);
-        if($queryUpper[$start + 1] == ';') {
+        if($queryUpper[$start + strlen($key)] == ';') {
           $set[$key]['ratio'] = 1;
         } else {
-          $start = strpos($queryUpper, $key) + 2;
+          $start = strpos($queryUpper, $key) + strlen($key) + 1;
           // assign the value of ration in char ratio index
           $set[$key]['ratio'] = substr($queryUpper, $start, 3);
         }
@@ -69,18 +103,22 @@ if ($queryUpper == "") {
     // return score
     return $score;
   }
-
-  // getFileScore gets the score for each file after count all characters numbers
-  // then send to score calculations function to return each file score
-  function getFileScore($fileContent, $query, $set) {
+  
+  // function takes string => 'file content' and search substring 
+  // then return how many time substring exist
+  function count_occur ($fileContent, $key) {
+    // result
+    $result = 0;
     // get file length
-    $fileLength = strlen($fileContent);
+    $keyLength = strlen($key);
     // each loop add character occur in set
-    for($i = 0; $i < $fileLength; $i++){
-      $set[$fileContent[$i]]['occur'] += 1;
+    for($i = 0; $i < strlen($fileContent); $i++) {
+      // if $key found add $key length to $i
+      if(substr($fileContent, $i, $keyLength) == $key) {
+        $result += 1;
+        $i += $keyLength - 1;
+      }
     }
-    // call score()  
-    $result = score($set,$query,$fileLength);
     return $result;
   }
 
@@ -92,12 +130,11 @@ if ($queryUpper == "") {
   $fileContent5 = file_get_contents("file5.txt");
 
   // get files score
-  $fileScore_1 = getFileScore($fileContent1, $queryUpper, $set);
-  $fileScore_2 = getFileScore($fileContent2, $queryUpper, $set);
-  $fileScore_3 = getFileScore($fileContent3, $queryUpper, $set);
-  $fileScore_4 = getFileScore($fileContent4, $queryUpper, $set);
-  $fileScore_5 = getFileScore($fileContent5, $queryUpper, $set);
-
+  $fileScore_1 = score($set, $queryUpper, $fileContent1, strlen($fileContent1));
+  $fileScore_2 = score($set, $queryUpper, $fileContent2, strlen($fileContent2));
+  $fileScore_3 = score($set, $queryUpper, $fileContent3, strlen($fileContent3));
+  $fileScore_4 = score($set, $queryUpper, $fileContent4, strlen($fileContent4));
+  $fileScore_5 = score($set, $queryUpper, $fileContent5, strlen($fileContent5));
 
   // files
   $files = [
