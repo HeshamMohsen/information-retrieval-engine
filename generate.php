@@ -27,7 +27,7 @@
 //   'php',
 //   'javascript'
 // ];
-// characters array from [A-E]
+// characters array from [A-Z]
 $charSet = ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 // open  5-files and add flag 'w' => 'write'
