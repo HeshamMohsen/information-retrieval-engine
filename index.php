@@ -14,12 +14,12 @@
   </div>
 
   <div class="forms">
-    <form action="/IR-engine/rank.php" method="post">
+    <form action="/information-retrieval/statistical-model/rank.php" method="post">
       <input type="text" name="querystring" placeholder="Ex: <A:0.4;B:0.6;C;>" autofocus>
       <input type="submit" value="Search" class="button">
     </form>
 
-    <form action="/IR-engine/generate.php" method="post">
+    <form action="/information-retrieval/statistical-model/generate.php" method="post">
       <input type="submit" value="Generate" class="button button--white">
     </form>
   </div>

@@ -88,7 +88,7 @@ $htmlStructure = '
       <div class="header-square">
         <h1>' . $title . '</h1>
         <p>' . $message . '</p>
-        <a href="http://localhost/IR-engine/index.php">' . $btnText . '</a>
+        <a href="http://localhost/information-retrieval/statistical-model/index.php">' . $btnText . '</a>
       </div>
     </div>
     <div class="image">

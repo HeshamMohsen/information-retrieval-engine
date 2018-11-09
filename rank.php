@@ -138,11 +138,11 @@ if ($queryUpper == "") {
 
   // files
   $files = [
-      "<a href='http://localhost/IR-engine/file1.txt' target='_blank'>file1</a>" => $fileScore_1,
-      "<a href='http://localhost/IR-engine/file2.txt' target='_blank'>file2</a>" => $fileScore_2,
-      "<a href='http://localhost/IR-engine/file3.txt' target='_blank'>file3</a>" => $fileScore_3,
-      "<a href='http://localhost/IR-engine/file4.txt' target='_blank'>file4</a>" => $fileScore_4,
-      "<a href='http://localhost/IR-engine/file5.txt' target='_blank'>file5</a>" => $fileScore_5
+      "<a href='http://localhost/information-retrieval/statistical-model/file1.txt' target='_blank'>file1</a>" => $fileScore_1,
+      "<a href='http://localhost/information-retrieval/statistical-model/file2.txt' target='_blank'>file2</a>" => $fileScore_2,
+      "<a href='http://localhost/information-retrieval/statistical-model/file3.txt' target='_blank'>file3</a>" => $fileScore_3,
+      "<a href='http://localhost/information-retrieval/statistical-model/file4.txt' target='_blank'>file4</a>" => $fileScore_4,
+      "<a href='http://localhost/information-retrieval/statistical-model/file5.txt' target='_blank'>file5</a>" => $fileScore_5
   ];
 
   // sort assoc. files according to the values
@@ -167,7 +167,7 @@ if ($queryUpper == "") {
           <div class="list">
              '. $list .'
           </div>
-          <a href="http://localhost/IR-engine/index.php" class="back"> Search Again </a>
+          <a href="http://localhost/information-retrieval/statistical-model/index.php" class="back"> Search Again </a>
         </div>
       </div>
       <div class="image">
@@ -185,7 +185,7 @@ if ($queryUpper == "") {
         <div class="header-square">
           <h1>' . $title . '</h1>
           <p>' . $message . '</p>
-          <a href="http://localhost/IR-engine/index.php">' . $btnText . '</a>
+          <a href="http://localhost/information-retrieval/statistical-model/index.php">' . $btnText . '</a>
         </div>
       </div>
       <div class="image">
